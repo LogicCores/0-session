@@ -1,9 +1,6 @@
 exports.forLib = function (LIB) {
     var ccjson = this;
 
-    const EXPRESS_SESSION = require("express-session");
-    const EXPRESS_SESSION_FILE_STORE = require('session-file-store')(EXPRESS_SESSION);
-
     return LIB.Promise.resolve({
         forConfig: function (defaultConfig) {
 
@@ -20,6 +17,10 @@ exports.forLib = function (LIB) {
 
                     return LIB.Promise.resolve({
                         app: function () {
+
+                            const EXPRESS_SESSION = require("express-session");
+                            const EXPRESS_SESSION_FILE_STORE = require('session-file-store')(EXPRESS_SESSION);
+
                             return LIB.Promise.resolve(
                                 ccjson.makeDetachedFunction(
 
